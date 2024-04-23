@@ -370,6 +370,8 @@ const handleSubmit = (e) => {
 ```
 
 ### 14. Run the React application with the command: npm start
+- your frontend application is started on http://localhost:3000/
+- your backend application is started on http://localhost:8080/
 
 
 
