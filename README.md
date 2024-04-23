@@ -42,12 +42,31 @@ Create a SPA (Single Page Application) website with the following registration f
 ## 02. Generate a new Spring Boot application
 - Use Spring Initializr https://start.spring.io/
 - Add these dependencies: **Spring Boot Dev Tools, Spring Web, Spring Data JPA, MySQL Driver**
-  ![SpringBoot_Initializr](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/39b3ee90-2e08-433b-bea8-1dc09321dc29)
+![SpringBoot_Initializr](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/39b3ee90-2e08-433b-bea8-1dc09321dc29)
 
 ## 03. Create the project structure of the application
 - Add a new package controller with a new class called **StudentController.java**
 - Add a new package model with a new class called **Student.java**
 - Add a new package repository with a new interface called **StudentRepository.java**
 - Add a new package service with a new class **StudentServiceImpl.java** and implements an interface called **StudentService.java**
+![ProjectStructure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/f95f70c4-d563-41ff-b291-3fb24d787ffb)
+
+## 04. Create a new POST API in StudentController.java
+```
+@RestController
+@RequestMapping("/student")
+@CrossOrigin
+public class StudentController {
+	
+	@Autowired
+	private StudentService studentService;
+	
+	@PostMapping("/add")
+	public String add(@RequestBody Student student) {
+		studentService.saveStudent(student);
+		return "New student is added";
+	}
+}
+```
 
 
