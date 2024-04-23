@@ -34,4 +34,20 @@ Create a SPA (Single Page Application) website with the following registration f
 
 ## 01. Setting up the development environment
 - Install Git https://git-scm.com/
-- Install 
+- Install TortoiseGit https://tortoisegit.org/download/
+- Install JAVA JDK 17 https://www.oracle.com/java/technologies/downloads/#jdk17-windows
+- Install IDE Eclipse/IntelliJ
+- Install Node js https://nodejs.org/en
+
+## 02. Generate a new Spring Boot application
+- Use Spring Initializr https://start.spring.io/
+- Add these dependencies: **Spring Boot Dev Tools, Spring Web, Spring Data JPA, MySQL Driver**
+  ![SpringBoot_Initializr](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/39b3ee90-2e08-433b-bea8-1dc09321dc29)
+
+## 03. Create the project structure of the application
+- Add a new package controller with a new class called **StudentController.java**
+- Add a new package model with a new class called **Student.java**
+- Add a new package repository with a new interface called **StudentRepository.java**
+- Add a new package service with a new class **StudentServiceImpl.java** and implements an interface called **StudentService.java**
+
+
