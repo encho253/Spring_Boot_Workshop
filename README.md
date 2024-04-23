@@ -28,7 +28,7 @@ Create a SPA (Single Page Application) website with the following registration f
 - Create a new database schema in MySql called 'studentsystem'
 
 ### Frontend
-- Create a new ReactJS application
+- Create a new `ReactJS` application
 - Add a well-looking registration form
 - Call the POST API from the backend for creating a new student
 
@@ -55,7 +55,7 @@ Create a SPA (Single Page Application) website with the following registration f
 - Add a new package service with a new class **StudentServiceImpl.java** and implements an interface called **StudentService.java**
 ![ProjectStructure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/f95f70c4-d563-41ff-b291-3fb24d787ffb)
 
-## 04. Create a new POST API in StudentController.java
+## 04. Create a new POST API in `StudentController.java`
 ```
 @RestController
 @RequestMapping("/student")
@@ -72,7 +72,7 @@ public class StudentController {
 	}
 }
 ```
-### 05. Transform Student.java class into an entity model class
+### 05. Transform `Student.java` class into an entity model class
 ```
 @Entity
 public class Student {
@@ -123,19 +123,22 @@ public class Student {
 }
 ```
 
-### 06. Extend and annotate the interface StudentRepository
+### 06. Extend and annotate the interface `StudentRepository.java`
 ```
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 }
 ```
 
-### 07. Add a new method for creating students in StudentService.java and StudentServiceImpl.java
+### 07. Add a new method for creating students in the interface `StudentService.java` and `StudentServiceImpl.java`
 ```
 public interface StudentService {
 	public Student saveStudent(Student student);
 }
+```
 
+### 08. Implement the interface `StudentService.java` by the class `StudentServiceImpl.java`
+```
 @Service
 public class StudentServiceImpl implements StudentService{
     
@@ -150,10 +153,10 @@ public class StudentServiceImpl implements StudentService{
 }
 ```
 
-### 08. Create a new database schema called 'studentsystem' in MySQL Workbench
+### 09. Create a new database schema called 'studentsystem' in MySQL Workbench
 ![image](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/9a900c18-c861-4740-9187-5e3b2895c149)
 
-### 09. Create a database connection configuration in the Spring Boot Application. Add the following configuration to the application.properties file
+### 10. Create a database connection configuration in the Spring Boot Application. Add the following configuration to the application.properties file
 
 ```
 #configuration
@@ -170,7 +173,7 @@ spring.datasource.password=appraisal_admin
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 
-### 10. Run the application and use Postman to send an HTTP POST request to the controller http://localhost:8080/student/add
+### 11. Run the application and use Postman to send an HTTP POST request to the controller http://localhost:8080/student/add
 with this JSON body as a request body
 ```
 {
@@ -180,7 +183,7 @@ with this JSON body as a request body
 }
 ```
 
-### 11. Create an empty React project in Visual Studio Code
+### 12. Create an empty React project in Visual Studio Code
 - Create somewhere a new folder
 - Open Visual Studio Code, Navigate to File -> Open Folder -> Select the folder that you have recently created
 - From the menu **Terminal** open a new Terminal and type the command:
@@ -188,7 +191,7 @@ with this JSON body as a request body
 - The generated project contains two files with the important logic, everything else is just a boilerplate
 ![React_Project_Structure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/4889e133-d6b0-496f-a41a-9a018b16333d)
 
-### 12. Replace the code in App.js with the following Registration form code
+### 13. Replace the code in App.js with the following Registration form code
 ```
 import "./styles.css";
 import React, { useState } from "react";
@@ -288,7 +291,7 @@ export default function App() {
 }
 
 ```
-### 12. Add the CSS for our registration form - create a new file called styles.css
+### 14. Add the CSS for our registration form - create a new file called styles.css
 ```
 body {
   background: #76b852;
@@ -357,7 +360,7 @@ button:disabled {
 
 ```
 
-### 13. Add `fetch` method to send HTTP requests to the backend, replace the `const handleSubmit = (e) => {...` with this code:
+### 15. Add `fetch` method to send HTTP requests to the backend, replace the `const handleSubmit = (e) => {...` with this code:
 ```
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -375,7 +378,8 @@ const handleSubmit = (e) => {
   };
 ```
 
-### 14. Run the React application with the command: npm start
+### 16. Run the React application with the command: 
+		`npm start`
 - your frontend application is started on http://localhost:3000/
 - your backend application is started on http://localhost:8080/
 
