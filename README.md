@@ -7,7 +7,7 @@ Create a SPA (Single Page Application) website with the following registration f
 
 ## Requirements
 ### Backend technologies:
-- Java 17
+- Java 17 or higher required
 - Spring Boot
 - MySQL Database
 - Hibernate
@@ -23,12 +23,12 @@ Create a SPA (Single Page Application) website with the following registration f
 - Add Rest Controller class for catching HTTP requests, locating it in a package .controller
 - Add Entity Model class Student (locating it in a package .model)
 - Student entity will be used for creating a new MySQL table, called Student in the Database
-- Add Student Repository class (locating it in a package .repository) which will be used from Spring Data to translate Java to SQL
+- Add Student Repository class (locating it in a package .repository) which will be used from Spring Data to translate Java classes to SQL tables
 - Add Student Service interface and Student Service class to implement it (locating it in a package .service).
 - Create a new database schema in MySql called 'studentsystem'
 
 ### Frontend
-- Create a new ReactJs application
+- Create a new ReactJS application
 - Add a well-looking registration form
 - Call the POST API from the backend for creating a new student
 
@@ -150,7 +150,7 @@ public class StudentServiceImpl implements StudentService{
 }
 ```
 
-### 08. Create a new database schema called studentsystem in MySQL Workbench
+### 08. Create a new database schema called 'studentsystem' in MySQL Workbench
 ![image](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/9a900c18-c861-4740-9187-5e3b2895c149)
 
 ### 09. Create a database connection configuration in the Spring Boot Application. Add the following configuration to the application.properties file
@@ -181,8 +181,11 @@ with this JSON body as a request body
 ```
 
 ### 11. Create an empty React project in Visual Studio Code
-- use the command: **npx create-react-app studentfrontend**
-- the generated project contains two files with the important logic, everything else is just a boilerplate
+- Create somewhere a new folder
+- Open Visual Studio Code, Navigate to File -> Open Folder -> Select the folder that you have recently created
+- From the menu **Terminal** open a new Terminal and type the command:
+             **npx create-react-app studentfrontend**
+- The generated project contains two files with the important logic, everything else is just a boilerplate
 ![React_Project_Structure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/4889e133-d6b0-496f-a41a-9a018b16333d)
 
 ### 12. Replace the code in App.js with the following Registration form code
@@ -354,7 +357,7 @@ button:disabled {
 
 ```
 
-### 13. Add fetch method to send HTTP requests to the backend
+### 13. Add `fetch` method to send HTTP requests to the backend, replace the `const handleSubmit = (e) => {...` with this code:
 ```
 const handleSubmit = (e) => {
     e.preventDefault();
