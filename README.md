@@ -41,6 +41,7 @@ Create a SPA (Single Page Application) website with the following registration f
 - Install Visual Studio Code
 - Install MySql Server https://dev.mysql.com/downloads/mysql/
 - Install MySql Workbench https://dev.mysql.com/downloads/workbench/
+- Install TCPView https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview
 
 ## 02. Generate a new Spring Boot application called StudentSystem
 - Use Spring Initializr https://start.spring.io/
