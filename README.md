@@ -38,6 +38,7 @@ Create a SPA (Single Page Application) website with the following registration f
 - Install JAVA JDK 17 https://www.oracle.com/java/technologies/downloads/#jdk17-windows
 - Install IDE Eclipse/IntelliJ
 - Install Node js https://nodejs.org/en
+- Install Visual Studio Code
 
 ## 02. Generate a new Spring Boot application called StudentSystem
 - Use Spring Initializr https://start.spring.io/
@@ -165,3 +166,210 @@ spring.datasource.password=appraisal_admin
 
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
+
+### 10. Run the application and use Postman to send an HTTP POST request to the controller http://localhost:8080/student/add
+with this JSON body as a request body
+```
+{
+    "firstName": "Encho",
+    "lastName": "Enevski",
+    "email": "encho.enevski@gmail.com"
+}
+```
+
+### 11. Create an empty React project in Visual Studio Code
+- use the command: **npx create-react-app studentfrontend**
+- the generated project contains two files with the important logic, everything else is just a boilerplate
+![React_Project_Structure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/4889e133-d6b0-496f-a41a-9a018b16333d)
+
+### 12. Replace the code in App.js with the following Registration form code
+```
+import "./styles.css";
+import React, { useState } from "react";
+
+export default function App() {
+  const [values, setValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+
+  const handleInputChange = (event) => {
+    event.preventDefault();
+
+    const { name, value } = event.target;
+    setValues((values) => ({
+      ...values,
+      [name]: value,
+    }));
+  };
+
+  const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (values.firstName && values.lastName && values.email) {
+      setValid(true);
+    }
+     setSubmitted(true);
+  };
+
+  return (
+    <div className="form-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        {submitted && valid && (
+          <div className="success-message">
+            <h3>
+              {" "}
+              Welcome {values.firstName} {values.lastName}{" "}
+            </h3>
+            <div> Your registration was successful! </div>
+          </div>
+        )}
+        {!valid && (
+          <input
+            class="form-field"
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            value={values.firstName}
+            onChange={handleInputChange}
+          />
+        )}
+
+        {submitted && !values.firstName && (
+          <span id="first-name-error">Please enter a first name</span>
+        )}
+
+        {!valid && (
+          <input
+            class="form-field"
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            value={values.lastName}
+            onChange={handleInputChange}
+          />
+        )}
+
+        {submitted && !values.lastName && (
+          <span id="last-name-error">Please enter a last name</span>
+        )}
+
+        {!valid && (
+          <input
+            class="form-field"
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={values.email}
+            onChange={handleInputChange}
+          />
+        )}
+
+        {submitted && !values.email && (
+          <span id="email-error">Please enter an email address</span>
+        )}
+        {!valid && (
+          <button class="form-field" type="submit">
+            Register
+          </button>
+        )}
+      </form>
+    </div>
+  );
+}
+
+```
+### 12. Add the CSS for our registration form - create a new file called styles.css
+```
+body {
+  background: #76b852;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 360px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.success-message {
+  font-family: "Roboto", sans-serif;
+  background-color: #3f89f8;
+  padding: 15px;
+  color: white;
+  text-align: center;
+}
+
+.form-field {
+  margin: 10px 0 10px 0;
+  padding: 15px;
+  font-size: 16px;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+span {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: red;
+  margin-bottom: 15px;
+}
+
+input {
+  background: #f2f2f2;
+}
+
+.error {
+  border-style: solid;
+  border: 2px solid #ffa4a4;
+}
+
+button {
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+```
+
+### 13. Add fetch method to send HTTP requests to the backend
+```
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if (values.firstName && values.lastName && values.email) {
+      setValid(true);
+    }
+    fetch("http://localhost:8080/student/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    }).then(() => {
+      setSubmitted(true);
+      console.log("New Student Added");
+    });
+  };
+```
+
+### 14. Run the React application with the command: npm start
+
+
+
