@@ -187,7 +187,7 @@ with this JSON body as a request body
 - Create somewhere a new folder
 - Open Visual Studio Code, Navigate to File -> Open Folder -> Select the folder that you have recently created
 - From the menu **Terminal** open a new Terminal and type the command:
-             ```npx create-react-app studentfrontend```
+               `npx create-react-app studentfrontend`
 - The generated project contains two files with the important logic, everything else is just a boilerplate
 ![React_Project_Structure](https://github.com/encho253/Spring_Boot_Workshop/assets/13778374/4889e133-d6b0-496f-a41a-9a018b16333d)
 
@@ -379,7 +379,7 @@ const handleSubmit = (e) => {
 ```
 
 ### 16. Run the React application with the command: 
-		```npm start```
+		npm start
 - your frontend application is started on http://localhost:3000/
 - your backend application is started on http://localhost:8080/
 
